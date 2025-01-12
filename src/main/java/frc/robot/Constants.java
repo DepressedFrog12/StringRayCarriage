@@ -48,6 +48,8 @@ public final class Constants {
     public static final int elevatorLeftID = 0;
     public static final int elevatorRightID = 1;
 
+    public static final double kV = 0.0;
+    public static final double kA = 0.0;
   }
 
   public static final class RobotConstants {

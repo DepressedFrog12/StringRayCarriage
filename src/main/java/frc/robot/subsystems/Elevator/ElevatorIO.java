@@ -1,11 +1,6 @@
 package frc.robot.subsystems.Elevator;
 import org.littletonrobotics.junction.AutoLog;
-import org.littletonrobotics.junction.LogTable;
-import org.littletonrobotics.junction.inputs.LoggableInputs;
-
 import frc.robot.Constants;
-
-import static frc.robot.Constants.*;
 
 public interface ElevatorIO {
     public static double elevatorRightID = Constants.ElevatorConstants.elevatorRightID;
