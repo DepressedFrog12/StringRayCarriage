@@ -56,4 +56,15 @@ public final class Constants {
     public static enum RobotStatus { REAL, SIM }
     public static RobotStatus currentStatus = RobotStatus.SIM;
   }
+
+  public static final class IntakeConstants {
+    public static final int IROLLER_MOTOR_ID = 8;
+    public static final int ROLLER_MOTOR_ID = 7;
+    public static final double rollerPositionConversionFactor = 1.0;
+    public static final double rollerVelocityConversionFactor = 1.0;
+    public static final double rollerP = 0.1;
+    public static final double rollerI = 0.0;
+    public static final double rollerD = 0.0;
+
+  }
 }

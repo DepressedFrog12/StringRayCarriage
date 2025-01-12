@@ -2,34 +2,40 @@ package frc.robot.subsystems.Intake;
 
 import org.littletonrobotics.junction.AutoLog;
 
+import edu.wpi.first.math.controller.ArmFeedforward;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.units.measure.AngularVelocity;
+import edu.wpi.first.units.measure.LinearVelocity;
 
 public interface IntakeIO {
 
+    // iRoller is the roller that will have negative RPM (inverted roller)
     @AutoLog
     public class IntakeIOInputs {
-        public Rotation2d pivotPosition = new Rotation2d();
-        public Rotation2d pivotTargetPosition = new Rotation2d();
-
-        // Rotation in Radians per second
-        public double pivotRPS = 0.0;
-        public double pivorAppliedVolts = 0.0;
-        public double pivotCurrentAmps = 0.0;
-
-        //Tempperature in Degrees C
-        public double pivotTemp = 0.0;
-
         public double rollerRPM = 0.0;
-        public double rollerTargetRPM = 0.0;
+        public double iRollerRPM = 0.0;
 
-        public double rollerAppliedVolts = 0.0;
-        public double rollerCurrentAmps = 0.0;
+        public double targetRPM = 0.0;
 
-        //Tempperature in Degrees C
+        public double rollerAmps = 0.0;
+
+        public double rollersVolts = 0.0;
+
+        public double rollerkP = 0.0;
+        public double rollerkI = 0.0;
+        public double rollerkD = 0.0;
+
         public double rollerTemp = 0.0;
+        public double iRollerTemp = 0.0;
+
     }
 
-    public abstract void processInputs(final IntakeIOInputs inputs);
+    public abstract void processInputs(final IntakeIOInputsAutoLogged inputs);
 
-    public abstract void updateinputs(final IntakeIOInputs inputs);
+    public abstract void setRollerVolts(double volts);
+
+    public abstract void setRollerRPM(AngularVelocity rpm, SimpleMotorFeedforward feedforward);
+
+    public abstract void setRollerPID(double kP, double kI, double kD);
 }

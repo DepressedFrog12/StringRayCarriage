@@ -4,11 +4,15 @@
 
 package frc.robot.subsystems.Intake;
 
+import org.littletonrobotics.junction.Logger;
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeSubsystem extends SubsystemBase {
   
   IntakeIO io;
+  IntakeIOInputsAutoLogged inputs = new IntakeIOInputsAutoLogged();
+
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem() {
     
@@ -19,5 +23,7 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     
+    io.processInputs(inputs);
+    Logger.processInputs("Intake", inputs);
   }
 }
