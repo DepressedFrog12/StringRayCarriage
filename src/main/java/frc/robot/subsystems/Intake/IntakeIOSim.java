@@ -1,12 +1,13 @@
 package frc.robot.subsystems.Intake;
 
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
-import edu.wpi.first.math.system.plant.DCMotor;
+import edu.wpi.first.math.system.plant.LinearSystemId;
 import edu.wpi.first.units.measure.AngularVelocity;
-import edu.wpi.first.wpilibj.simulation.FlywheelSim;
+import edu.wpi.first.wpilibj.simulation.DCMotorSim;
+import frc.robot.Constants;
 
 public class IntakeIOSim implements IntakeIO{
-    
+    public DCMotorSim rollerSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(Constants.IntakeConstants.kVSim, Constants.IntakeConstants.kASim), DCMotorSim.MotorType.kBrushless, 0.0); 
 
 	@Override
 	public void processInputs(IntakeIOInputsAutoLogged inputs) {
@@ -31,6 +32,4 @@ public class IntakeIOSim implements IntakeIO{
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setRollerPID'");
 	}
-
-
 }

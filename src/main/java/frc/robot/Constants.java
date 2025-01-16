@@ -65,6 +65,7 @@ public final class Constants {
     public static final double rollerP = 0.1;
     public static final double rollerI = 0.0;
     public static final double rollerD = 0.0;
-
+    public static final double kVSim = 0.02;
+    public static final double kASim = 0.02;
   }
 }

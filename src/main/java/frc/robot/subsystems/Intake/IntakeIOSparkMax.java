@@ -5,8 +5,6 @@ import static edu.wpi.first.units.Units.*;
 import com.revrobotics.spark.SparkBase.ControlType;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
-import com.revrobotics.spark.SparkClosedLoopController.ArbFFUnits;
-import com.revrobotics.spark.ClosedLoopSlot;
 import com.revrobotics.spark.SparkClosedLoopController;
 import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
@@ -14,7 +12,6 @@ import com.revrobotics.spark.config.SparkMaxConfig;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.units.measure.AngularVelocity;
-import edu.wpi.first.units.measure.LinearVelocity;
 import frc.robot.Constants;
 import static frc.robot.Constants.*;
 
@@ -59,12 +56,14 @@ public class IntakeIOSparkMax implements IntakeIO {
 	@Override
 	public void setRollerVolts(double volts) {
         roller.setVoltage(MathUtil.clamp(volts, -12.0, 12.0));
+        iRoller.setVoltage(MathUtil.clamp(volts, -12.0, 12.0));
     }
 
 
 	@Override
 	public void setRollerRPM(AngularVelocity rpm, SimpleMotorFeedforward feedforward) {
         rollerController.setReference(rpm.in(Rotations.per(Minute)), ControlType.kVelocity);
+        iRollerController.setReference(rpm.in(Rotations.per(Minute)), ControlType.kVelocity);
     }
 
 	@Override
@@ -75,5 +74,6 @@ public class IntakeIOSparkMax implements IntakeIO {
             .pid(kP, kI, kD);
 
         roller.configure(rollerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+        iRoller.configure(rollerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
     }
 }
