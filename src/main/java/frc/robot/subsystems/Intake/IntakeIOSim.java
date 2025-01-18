@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.simulation.DCMotorSim;
 import frc.robot.Constants;
 
 public class IntakeIOSim implements IntakeIO{
-    public DCMotorSim rollerSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(Constants.IntakeConstants.kVSim, Constants.IntakeConstants.kASim), DCMotorSim.MotorType.kBrushless, 0.0); 
 
 	@Override
 	public void processInputs(IntakeIOInputsAutoLogged inputs) {

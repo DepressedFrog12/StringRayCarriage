@@ -4,6 +4,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.units.measure.AngularVelocity;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean
@@ -17,6 +19,12 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+
+  public static enum Mode { REAL, SIM };
+
+  public static final Mode mode = Mode.REAL;
+
+
   public static final class DriveConstants {
     public static final int LEFT_LEADER_ID = 1;
     public static final int LEFT_FOLLOWER_ID = 2;
@@ -66,6 +74,5 @@ public final class Constants {
     public static final double rollerI = 0.0;
     public static final double rollerD = 0.0;
     public static final double kVSim = 0.02;
-    public static final double kASim = 0.02;
-  }
+    public static final double kASim = 0.02;  }
 }

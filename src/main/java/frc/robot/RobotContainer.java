@@ -13,6 +13,7 @@ import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.Autos;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
+import frc.robot.subsystems.Intake.IntakeIOSparkMax;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -27,6 +28,8 @@ public class RobotContainer {
   // The robot's subsystems
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANRollerSubsystem rollerSubsystem = new CANRollerSubsystem();
+
+  private final IntakeIOSparkMax intakeSubsystem = new IntakeIOSparkMax();
 
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(
@@ -87,8 +90,10 @@ public class RobotContainer {
             rollerSubsystem,
             () -> operatorController.getRightTriggerAxis(),
             () -> operatorController.getLeftTriggerAxis()));
-  }
 
+    // Set the default command for the intake subsystem to the command from the
+    // factory with the values provided by the triggers on the operator controller
+  }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
