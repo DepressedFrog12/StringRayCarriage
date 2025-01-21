@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -11,9 +12,13 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.Autos;
+import frc.robot.commands.RunIntake;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
+import frc.robot.subsystems.Intake.IntakeIOSim;
 import frc.robot.subsystems.Intake.IntakeIOSparkMax;
+import frc.robot.subsystems.Intake.IntakeSubsystem;
+import frc.robot.Constants.IntakeConstants;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -26,18 +31,15 @@ import frc.robot.subsystems.Intake.IntakeIOSparkMax;
  */
 public class RobotContainer {
   // The robot's subsystems
+
+  
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANRollerSubsystem rollerSubsystem = new CANRollerSubsystem();
 
-  private final IntakeIOSparkMax intakeSubsystem = new IntakeIOSparkMax();
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem(new IntakeIOSparkMax());
 
   // The driver's controller
-  private final CommandXboxController driverController = new CommandXboxController(
-      OperatorConstants.DRIVER_CONTROLLER_PORT);
-
-  // The operator's controller
-  private final CommandXboxController operatorController = new CommandXboxController(
-      OperatorConstants.OPERATOR_CONTROLLER_PORT);
+  private final CommandXboxController driverController = new CommandXboxController(0);
 
   // The autonomous chooser
   private final SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -46,7 +48,14 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
+      if (RobotBase.isSimulation()) {
+        new IntakeSubsystem(new IntakeIOSim()); 
+      } else {
+        new IntakeSubsystem(new IntakeIOSparkMax());
+      }
+
     configureBindings();
+
 
     // Set the options to show up in the Dashboard for selecting auto modes. If you
     // add additional auto modes you can add additional lines here with
@@ -71,7 +80,7 @@ public class RobotContainer {
   private void configureBindings() {
     // Set the A button to run the "runRoller" command from the factory with a fixed
     // value ejecting the gamepiece while the button is held
-    operatorController.a()
+    driverController.a()
         .whileTrue(rollerSubsystem.runRoller(rollerSubsystem, () -> RollerConstants.ROLLER_EJECT_VALUE, () -> 0));
 
     // Set the default command for the drive subsystem to the command provided by
@@ -88,11 +97,12 @@ public class RobotContainer {
     rollerSubsystem.setDefaultCommand(
         rollerSubsystem.runRoller(
             rollerSubsystem,
-            () -> operatorController.getRightTriggerAxis(),
-            () -> operatorController.getLeftTriggerAxis()));
+            () -> driverController.getRightTriggerAxis(),
+            () -> driverController.getLeftTriggerAxis()));
 
     // Set the default command for the intake subsystem to the command from the
     // factory with the values provided by the triggers on the operator controller
+    driverController.b().whileTrue(new RunIntake(IntakeConstants.RPM));
   }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

@@ -61,7 +61,7 @@ public class IntakeIOSparkMax implements IntakeIO {
 
 
 	@Override
-	public void setRollerRPM(AngularVelocity rpm, SimpleMotorFeedforward feedforward) {
+	public void setRollerRPM(AngularVelocity rpm) {
         rollerController.setReference(rpm.in(Rotations.per(Minute)), ControlType.kVelocity);
         iRollerController.setReference(rpm.in(Rotations.per(Minute)), ControlType.kVelocity);
     }

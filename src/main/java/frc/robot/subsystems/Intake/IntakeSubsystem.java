@@ -21,7 +21,7 @@ public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
   public IntakeSubsystem(IntakeIO intakeIO) {
     io = intakeIO;
-    
+    instance = this;
   }
 
 public static IntakeSubsystem getInstance() {
@@ -32,8 +32,8 @@ public static IntakeSubsystem getInstance() {
   }
 
   
-  public void setRPM(AngularVelocity rpm, SimpleMotorFeedforward feedforward) {
-    io.setRollerRPM(rpm, feedforward);
+  public void setRPM(AngularVelocity rpm) {
+    io.setRollerRPM(rpm);
   }
 
   @Override

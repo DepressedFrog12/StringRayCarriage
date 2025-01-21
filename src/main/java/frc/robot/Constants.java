@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import static edu.wpi.first.units.Units.*;
 import edu.wpi.first.units.measure.AngularVelocity;
 
 /**
@@ -74,5 +75,7 @@ public final class Constants {
     public static final double rollerI = 0.0;
     public static final double rollerD = 0.0;
     public static final double kVSim = 0.02;
-    public static final double kASim = 0.02;  }
+    public static final double kASim = 0.02;  
+    public static final AngularVelocity RPM = Rotations.per(Minute).of(2000);
+  }
 }

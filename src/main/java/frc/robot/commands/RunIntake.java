@@ -4,7 +4,8 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
+import static edu.wpi.first.units.Units.*;
+
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake.IntakeIOSparkMax;
@@ -14,13 +15,11 @@ import frc.robot.subsystems.Intake.IntakeSubsystem;
 public class RunIntake extends Command {
   private IntakeSubsystem intake;
   private AngularVelocity RPM;
-  private SimpleMotorFeedforward feedforward;
   /** Creates a new RunIntake. */
-  public RunIntake(AngularVelocity RPM, SimpleMotorFeedforward feedforward) {
+  public RunIntake(AngularVelocity RPM) {
     // Use addRequirements() here to declare subsystem dependencies.
     intake = IntakeSubsystem.getInstance();
     this.RPM = RPM;
-    this.feedforward = feedforward;
     addRequirements(intake);
   }
 
@@ -31,16 +30,19 @@ public class RunIntake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    intake.setRPM(RPM, feedforward);
+
+    intake.setRPM(RPM);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    intake.setRPM(RotationsPerSecond.zero());
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return true;  
   }
 }

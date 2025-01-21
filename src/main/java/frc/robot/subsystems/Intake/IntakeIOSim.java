@@ -21,7 +21,7 @@ public class IntakeIOSim implements IntakeIO{
 	}
 
 	@Override
-	public void setRollerRPM(AngularVelocity rpm, SimpleMotorFeedforward feedforward) {
+	public void setRollerRPM(AngularVelocity rpm) {
 		// TODO Auto-generated method stub
 		throw new UnsupportedOperationException("Unimplemented method 'setRollerRPM'");
 	}
