@@ -35,9 +35,6 @@ public class RobotContainer {
   
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANRollerSubsystem rollerSubsystem = new CANRollerSubsystem();
-
-  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem(new IntakeIOSparkMax());
-
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(0);
 
