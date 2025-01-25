@@ -63,7 +63,7 @@ public final class Constants {
 
   public static final class RobotConstants {
     public static enum RobotStatus { REAL, SIM }
-    public static RobotStatus currentStatus = RobotStatus.SIM;
+    public static RobotStatus currentStatus = RobotStatus.REAL;
   }
 
   public static final class IntakeConstants {

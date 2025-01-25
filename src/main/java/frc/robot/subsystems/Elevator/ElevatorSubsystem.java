@@ -4,11 +4,8 @@
 
 package frc.robot.subsystems.Elevator;
 
-import org.littletonrobotics.junction.Logger;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.subsystems.Elevator.ElevatorIO;
 import frc.robot.subsystems.Elevator.ElevatorIO.ElevatorInputs;
 
 /** Add your docs here. */

@@ -2,7 +2,6 @@ package frc.robot.subsystems.Intake;
 
 import org.littletonrobotics.junction.AutoLog;
 
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.units.measure.AngularVelocity;
 
 public interface IntakeIO {
@@ -32,7 +31,9 @@ public interface IntakeIO {
 
     public abstract void setRollerVolts(double volts);
 
-    public abstract void setRollerRPM(AngularVelocity rpm   );
+    public abstract void setRollerRPM(AngularVelocity rPM   );
+
+    public abstract void settoZero();
 
     public abstract void setRollerPID(double kP, double kI, double kD);
 }

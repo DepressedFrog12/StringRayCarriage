@@ -2,7 +2,6 @@ package frc.robot.subsystems.Intake;
 
 import static edu.wpi.first.units.Units.*;
 
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.system.plant.DCMotor;
 import edu.wpi.first.math.system.plant.LinearSystemId;
 import edu.wpi.first.units.measure.AngularVelocity;
@@ -45,5 +44,11 @@ public class IntakeIOSim implements IntakeIO{
 	@Override
 	public void setRollerPID(double kP, double kI, double kD) {
 		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void settoZero() {
+		intakeMotorSim.setAngularVelocity(0);
+		iIntakeMotorSim.setAngularVelocity(0);
 	}
 }

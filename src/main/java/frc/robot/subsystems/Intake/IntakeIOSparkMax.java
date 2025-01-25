@@ -10,7 +10,6 @@ import com.revrobotics.spark.SparkMax;
 import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.units.measure.AngularVelocity;
 import frc.robot.Constants;
 import static frc.robot.Constants.*;
@@ -75,5 +74,12 @@ public class IntakeIOSparkMax implements IntakeIO {
 
         roller.configure(rollerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
         iRoller.configure(rollerConfig, ResetMode.kResetSafeParameters, PersistMode.kPersistParameters);
+    }
+
+
+    @Override
+    public void settoZero() {
+        rollerController.setReference(0, ControlType.kVelocity);
+        iRollerController.setReference(0, ControlType.kVelocity);
     }
 }

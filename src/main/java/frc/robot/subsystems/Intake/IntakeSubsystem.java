@@ -5,11 +5,8 @@
 package frc.robot.subsystems.Intake;
 
 import org.littletonrobotics.junction.Logger;
-
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.subsystems.Elevator.ElevatorIO;
 
 public class IntakeSubsystem extends SubsystemBase {
   
@@ -32,8 +29,12 @@ public static IntakeSubsystem getInstance() {
   }
 
   
-  public void setRPM(AngularVelocity rpm) {
-    io.setRollerRPM(rpm);
+  public void setRPM(AngularVelocity rPM) {
+    io.setRollerRPM(rPM);
+  }
+
+  public void settoZero() {
+    io.settoZero();;
   }
 
   @Override
