@@ -12,10 +12,12 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.RunIntake;
+import frc.robot.commands.RunOuttake;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
 import frc.robot.subsystems.Intake.IntakeIOSim;
 import frc.robot.subsystems.Intake.IntakeIOSparkMax;
+import frc.robot.subsystems.Intake.IntakeIOTalonSRX;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 import frc.robot.Constants.IntakeConstants;
 
@@ -47,7 +49,7 @@ public class RobotContainer {
       if (RobotBase.isSimulation()) {
         new IntakeSubsystem(new IntakeIOSim()); 
       } else {
-        new IntakeSubsystem(new IntakeIOSparkMax());
+        new IntakeSubsystem(new IntakeIOTalonSRX());
       }
 
     configureBindings();
@@ -99,6 +101,7 @@ public class RobotContainer {
     // Set the default command for the intake subsystem to the command from the
     // factory with the values provided by the triggers on the operator controller
     driverController.b().whileTrue(new RunIntake(IntakeConstants.RPM));
+    driverController.y().whileTrue(new RunOuttake(IntakeConstants.RPM));
   }
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

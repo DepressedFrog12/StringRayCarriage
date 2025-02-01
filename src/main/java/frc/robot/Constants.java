@@ -67,8 +67,8 @@ public final class Constants {
   }
 
   public static final class IntakeConstants {
-    public static final int IROLLER_MOTOR_ID = 8;
-    public static final int ROLLER_MOTOR_ID = 7;
+    public static final int IROLLER_MOTOR_ID = 22;
+    public static final int ROLLER_MOTOR_ID = 21;
     public static final double rollerPositionConversionFactor = 1.0;
     public static final double rollerVelocityConversionFactor = 1.0;
     public static final double rollerP = 0.1;
@@ -76,6 +76,6 @@ public final class Constants {
     public static final double rollerD = 0.0;
     public static final double kVSim = 0.02;
     public static final double kASim = 0.02;  
-    public static final AngularVelocity RPM = Rotations.per(Minute).of(2000);
+    public static final double RPM = 0.35;
   }
 }

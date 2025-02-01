@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class RunIntake extends Command {
+public class RunOuttake extends Command {
   private IntakeSubsystem intake;
   private double RPM;
   /** Creates a new RunIntake. */
-  public RunIntake(double RPM) {
+  public RunOuttake(double RPM) {
     // Use addRequirements() here to declare subsystem dependencies.
     intake = IntakeSubsystem.getInstance();
     this.RPM = RPM;
@@ -28,7 +28,7 @@ public class RunIntake extends Command {
   @Override
   public void execute() {
 
-    intake.setRPM(RPM);
+    intake.setRPM(-RPM);
   }
 
   // Called once the command ends or is interrupted.

@@ -31,7 +31,7 @@ public interface IntakeIO {
 
     public abstract void setRollerVolts(double volts);
 
-    public abstract void setRollerRPM(AngularVelocity rPM   );
+    public abstract void setRollerRPM(double rPM);
 
     public abstract void settoZero();
 

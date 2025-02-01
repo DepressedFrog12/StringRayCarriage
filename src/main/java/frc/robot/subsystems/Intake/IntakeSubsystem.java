@@ -29,7 +29,7 @@ public static IntakeSubsystem getInstance() {
   }
 
   
-  public void setRPM(AngularVelocity rPM) {
+  public void setRPM(double rPM) {
     io.setRollerRPM(rPM);
   }
 

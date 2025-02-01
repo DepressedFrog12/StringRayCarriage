@@ -35,10 +35,10 @@ public class IntakeIOSim implements IntakeIO{
 	}
 
 	@Override
-	public void setRollerRPM(AngularVelocity rpm) {
-		System.out.println(rpm.in(RadiansPerSecond));
-		intakeMotorSim.setAngularVelocity(rpm.in(RadiansPerSecond));
-		iIntakeMotorSim.setAngularVelocity(-rpm.in(RadiansPerSecond));
+	public void setRollerRPM(double rpm) {
+		System.out.println(rpm);
+		intakeMotorSim.setInput(rpm);
+		iIntakeMotorSim.setInput(rpm);
 	}
 
 	@Override
