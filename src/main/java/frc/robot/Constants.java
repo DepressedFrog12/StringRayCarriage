@@ -23,42 +23,6 @@ public final class Constants {
 
   public static final Mode mode = Mode.REAL;
 
-
-  public static final class DriveConstants {
-    public static final int LEFT_LEADER_ID = 1;
-    public static final int LEFT_FOLLOWER_ID = 2;
-    public static final int RIGHT_LEADER_ID = 3;
-    public static final int RIGHT_FOLLOWER_ID = 4;
-
-    public static final int DRIVE_MOTOR_CURRENT_LIMIT = 60;
-  }
-
-  // public static final class CarriageConstants {
-  //   public static final int CARRIAGE_MOTOR_ID = 5;
-  //   public static final int CARRIAGE_MOTOR_CURRENT_LIMIT = 60;
-  //   public static final double CARRIAGE_MOTOR_VOLTAGE_COMP = 10;
-  //   public static final double CARRIAGE_EJECT_VALUE = 0.44;
-  // }
-
-  public static final class OperatorConstants {
-    public static final int DRIVER_CONTCARRIAGE_PORT = 0;
-    public static final int OPERATOR_CONTCARRIAGE_PORT = 1;
-  }
-
-  public static final class ElevatorConstants {
-    public static final double gearing = 150.0/7.0;
-    public static final double startingHeight = 0.0;
-    public static final double elevatorCarriageMass = 0.0;
-    public static final double[] elevatorHeight = new double[] {0.0, 2.0};
-    public static final double elevatorDrumRadius = 0.0;
-
-    public static final int elevatorLeftID = 0;
-    public static final int elevatorRightID = 1;
-
-    public static final double kV = 0.0;
-    public static final double kA = 0.0;
-  }
-
   public static final class RobotConstants {
     public static enum RobotStatus { REAL, SIM }
     public static RobotStatus currentStatus = RobotStatus.REAL;
