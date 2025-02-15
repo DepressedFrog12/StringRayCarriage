@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.RollerConstants;
 import frc.robot.commands.Autos;
-import frc.robot.commands.RunIntake;
-import frc.robot.commands.RunOuttake;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
 import frc.robot.subsystems.Intake.IntakeIOSim;
 import frc.robot.subsystems.Intake.IntakeIOSparkMax;
 import frc.robot.subsystems.Intake.IntakeIOTalonSRX;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
+import frc.robot.subsystems.Intake.Commands.RunIntake;
+import frc.robot.subsystems.Intake.Commands.RunOuttake;
 import frc.robot.Constants.IntakeConstants;
 
 /**
