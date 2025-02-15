@@ -10,7 +10,6 @@ public interface IntakeIO {
     @AutoLog
     public class IntakeIOInputs {
         public double rollerRPM = 0.0;
-        public double iRollerRPM = 0.0;
 
         public double targetRPM = 0.0;
 
@@ -23,7 +22,6 @@ public interface IntakeIO {
         public double rollerkD = 0.0;
 
         public double rollerTemp = 0.0;
-        public double iRollerTemp = 0.0;
 
     }
 

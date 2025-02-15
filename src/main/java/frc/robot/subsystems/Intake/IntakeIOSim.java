@@ -10,35 +10,29 @@ import frc.robot.Constants;
 
 public class IntakeIOSim implements IntakeIO{
 	private DCMotorSim intakeMotorSim;
-	private DCMotorSim iIntakeMotorSim;
 
 	public IntakeIOSim() {
 		intakeMotorSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(Constants.IntakeConstants.kVSim, Constants.IntakeConstants.kASim), DCMotor.getNEO(1));
-		iIntakeMotorSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(Constants.IntakeConstants.kVSim, Constants.IntakeConstants.kASim), DCMotor.getNEO(1));
 
 	}
 
 	@Override
 	public void processInputs(IntakeIOInputsAutoLogged inputs) {
 		intakeMotorSim.update(0.02);
-		iIntakeMotorSim.update(0.02);
 
 		inputs.rollerRPM = intakeMotorSim.getAngularVelocityRPM();
-		inputs.iRollerRPM = iIntakeMotorSim.getAngularVelocityRPM();
 		inputs.rollersVolts = intakeMotorSim.getInputVoltage();
 	}
 
 	@Override
 	public void setRollerVolts(double volts) {
 		intakeMotorSim.setInputVoltage(volts);
-		iIntakeMotorSim.setInputVoltage(volts);
 	}
 
 	@Override
 	public void setRollerRPM(double rpm) {
 		System.out.println(rpm);
 		intakeMotorSim.setInput(rpm);
-		iIntakeMotorSim.setInput(rpm);
 	}
 
 	@Override
@@ -49,6 +43,6 @@ public class IntakeIOSim implements IntakeIO{
 	@Override
 	public void settoZero() {
 		intakeMotorSim.setAngularVelocity(0);
-		iIntakeMotorSim.setAngularVelocity(0);
+		intakeMotorSim.setInput(0);
 	}
 }

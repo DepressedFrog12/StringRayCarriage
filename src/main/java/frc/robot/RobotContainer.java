@@ -14,7 +14,6 @@ import frc.robot.commands.Autos;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANRollerSubsystem;
 import frc.robot.subsystems.Intake.IntakeIOSim;
-import frc.robot.subsystems.Intake.IntakeIOSparkMax;
 import frc.robot.subsystems.Intake.IntakeIOTalonSRX;
 import frc.robot.subsystems.Intake.IntakeSubsystem;
 import frc.robot.subsystems.Intake.Commands.RunIntake;

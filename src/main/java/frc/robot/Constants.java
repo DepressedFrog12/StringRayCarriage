@@ -67,7 +67,6 @@ public final class Constants {
   }
 
   public static final class IntakeConstants {
-    public static final int IROLLER_MOTOR_ID = 22;
     public static final int ROLLER_MOTOR_ID = 21;
     public static final double rollerPositionConversionFactor = 1.0;
     public static final double rollerVelocityConversionFactor = 1.0;
