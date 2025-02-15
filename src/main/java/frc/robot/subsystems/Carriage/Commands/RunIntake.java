@@ -2,22 +2,21 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.subsystems.Intake.Commands;
+package frc.robot.subsystems.Carriage.Commands;
 
-import edu.wpi.first.units.measure.AngularVelocity;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.subsystems.Intake.IntakeSubsystem;
+import frc.robot.subsystems.Carriage.CarriageSubsystem;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
-public class RunOuttake extends Command {
-  private IntakeSubsystem intake;
+public class RunIntake extends Command {
+  private CarriageSubsystem carriage;
   private double RPM;
-  /** Creates a new RunIntake. */
-  public RunOuttake(double RPM) {
+  /** Creates a new RunCarriage. */
+  public RunIntake(double RPM) {
     // Use addRequirements() here to declare subsystem dependencies.
-    intake = IntakeSubsystem.getInstance();
+    carriage = CarriageSubsystem.getInstance();
     this.RPM = RPM;
-    addRequirements(intake);
+    addRequirements(carriage);
   }
 
   // Called when the command is initially scheduled.
@@ -28,13 +27,13 @@ public class RunOuttake extends Command {
   @Override
   public void execute() {
 
-    intake.setRPM(-RPM);
+    carriage.setRPM(RPM);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    intake.settoZero();
+    carriage.settoZero();
   }
 
   // Returns true when the command should end.
