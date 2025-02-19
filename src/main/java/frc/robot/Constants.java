@@ -23,6 +23,7 @@ public final class Constants {
 
   public static final Mode mode = Mode.REAL;
 
+
   public static final class RobotConstants {
     public static enum RobotStatus { REAL, SIM }
     public static RobotStatus currentStatus = RobotStatus.REAL;
@@ -30,13 +31,8 @@ public final class Constants {
 
   public static final class CarriageConstants {
     public static final int CARRIAGE_MOTOR_ID = 21;
-    public static final double carriagePositionConversionFactor = 1.0;
-    public static final double carriageVelocityConversionFactor = 1.0;
-    public static final double carriageP = 0.1;
-    public static final double carriageI = 0.0;
-    public static final double carriageD = 0.0;
-    public static final double kVSim = 0.02;
-    public static final double kASim = 0.02;  
-    public static final double RPM = 0.35;
+    public static final double maxPercent = 0.35;
+    public static enum Motor {SPARKMAX, TALONSRX};
+    public static Motor motor = Motor.SPARKMAX;
   }
 }

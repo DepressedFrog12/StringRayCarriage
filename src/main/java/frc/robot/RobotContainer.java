@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.CarriageConstants;
+import frc.robot.subsystems.Carriage.CarriageIOSparkMax;
 import frc.robot.subsystems.Carriage.CarriageIOSim;
 import frc.robot.subsystems.Carriage.CarriageIOTalonSRX;
 import frc.robot.subsystems.Carriage.CarriageSubsystem;
@@ -41,19 +42,22 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-      if (RobotBase.isSimulation()) {
-        new CarriageSubsystem(new CarriageIOSim()); 
-      } else {
-        new CarriageSubsystem(new CarriageIOTalonSRX());
-      }
+    if (RobotBase.isSimulation()) {
+      new CarriageSubsystem(new CarriageIOSim());
+    } else if (Constants.CarriageConstants.motor == Constants.CarriageConstants.Motor.SPARKMAX) {
+      new CarriageSubsystem(new CarriageIOSparkMax());
+    } else {
+      new CarriageSubsystem(new CarriageIOTalonSRX());
+    }
 
     configureBindings();
 
-    }
-    // Set the options to show up in the Dashboard for selecting auto modes. If you
-    // add additional auto modes you can add additional lines here with
-    // autoChooser.addOption
-    // autoChooser.setDefaultOption("Autonomous", Autos.exampleAuto(driveSubsystem));
+  }
+  // Set the options to show up in the Dashboard for selecting auto modes. If you
+  // add additional auto modes you can add additional lines here with
+  // autoChooser.addOption
+  // autoChooser.setDefaultOption("Autonomous",
+  // Autos.exampleAuto(driveSubsystem));
   // }
 
   /**
@@ -74,7 +78,8 @@ public class RobotContainer {
     // Set the A button to run the "runRoller" command from the factory with a fixed
     // // value ejecting the gamepiece while the button is held
     // driverController.a()
-    //     .whileTrue(rollerSubsystem.runRoller(rollerSubsystem, () -> RollerConstants.ROLLER_EJECT_VALUE, () -> 0));
+    // .whileTrue(rollerSubsystem.runRoller(rollerSubsystem, () ->
+    // RollerConstants.ROLLER_EJECT_VALUE, () -> 0));
 
     // Set the default command for the drive subsystem to the command provided by
     // factory with the values provided by the joystick axes on the driver
@@ -82,22 +87,25 @@ public class RobotContainer {
     // stick away from you (a negative value) drives the robot forwards (a positive
     // // value)
     // driveSubsystem.setDefaultCommand(
-    //     driveSubsystem.driveArcade(
-    //         driveSubsystem, () -> -driverController.getLeftY(), () -> -driverController.getRightX()));
+    // driveSubsystem.driveArcade(
+    // driveSubsystem, () -> -driverController.getLeftY(), () ->
+    // -driverController.getRightX()));
 
     // Set the default command for the roller subsystem to the command from the
-    // // factory with the values provided by the triggers on the operator controller
+    // // factory with the values provided by the triggers on the operator
+    // controller
     // rollerSubsystem.setDefaultCommand(
-    //     rollerSubsystem.runRoller(
-    //         rollerSubsystem,
-    //         () -> driverController.getRightTriggerAxis(),
-    //         () -> driverController.getLeftTriggerAxis()));
+    // rollerSubsystem.runRoller(
+    // rollerSubsystem,
+    // () -> driverController.getRightTriggerAxis(),
+    // () -> driverController.getLeftTriggerAxis()));
 
     // Set the default command for the intake subsystem to the command from the
     // factory with the values provided by the triggers on the operator controller
-    driverController.b().whileTrue(new RunIntake(CarriageConstants.RPM));
-    driverController.y().whileTrue(new RunOuttake(CarriageConstants.RPM));
+    driverController.b().whileTrue(new RunIntake(CarriageConstants.maxPercent));
+    driverController.y().whileTrue(new RunOuttake(CarriageConstants.maxPercent));
   }
+
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *

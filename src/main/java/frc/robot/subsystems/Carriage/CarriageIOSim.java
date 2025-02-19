@@ -11,7 +11,7 @@ public class CarriageIOSim implements CarriageIO{
 	private DCMotorSim carriageMotorSim;
 
 	public CarriageIOSim() {
-		carriageMotorSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(Constants.CarriageConstants.kVSim, Constants.CarriageConstants.kASim), DCMotor.getNEO(1));
+		carriageMotorSim = new DCMotorSim(LinearSystemId.createDCMotorSystem(0.02, 0.02), DCMotor.getNEO(1));
 
 	}
 
