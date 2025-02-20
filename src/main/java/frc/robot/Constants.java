@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean
@@ -19,20 +18,28 @@ package frc.robot;
  */
 public final class Constants {
 
-  public static enum Mode { REAL, SIM };
+  public static enum Mode {
+    REAL, SIM
+  };
 
   public static final Mode mode = Mode.REAL;
 
-
   public static final class RobotConstants {
-    public static enum RobotStatus { REAL, SIM }
+    public static enum RobotStatus {
+      REAL, SIM
+    }
+
     public static RobotStatus currentStatus = RobotStatus.REAL;
   }
 
   public static final class CarriageConstants {
     public static final int CARRIAGE_MOTOR_ID = 21;
     public static final double maxPercent = 0.35;
-    public static enum Motor {SPARKMAX, TALONSRX};
+
+    public static enum Motor {
+      SPARKMAX, TALONSRX
+    };
+
     public static Motor motor = Motor.SPARKMAX;
   }
 }

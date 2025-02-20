@@ -14,9 +14,7 @@ import frc.robot.subsystems.Carriage.CarriageIOSparkMax;
 import frc.robot.subsystems.Carriage.CarriageIOSim;
 import frc.robot.subsystems.Carriage.CarriageIOTalonSRX;
 import frc.robot.subsystems.Carriage.CarriageSubsystem;
-import frc.robot.subsystems.Carriage.Commands.RunIntake;
-import frc.robot.subsystems.Carriage.Commands.RunOuttake;
-import frc.robot.Constants.CarriageConstants;
+import frc.robot.subsystems.Carriage.Commands.RunCarriage;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -102,8 +100,8 @@ public class RobotContainer {
 
     // Set the default command for the intake subsystem to the command from the
     // factory with the values provided by the triggers on the operator controller
-    driverController.b().whileTrue(new RunIntake(CarriageConstants.maxPercent));
-    driverController.y().whileTrue(new RunOuttake(CarriageConstants.maxPercent));
+    driverController.b().whileTrue(new RunCarriage(true, CarriageConstants.maxPercent));
+    driverController.y().whileTrue(new RunCarriage(false, CarriageConstants.maxPercent));
   }
 
   /**
