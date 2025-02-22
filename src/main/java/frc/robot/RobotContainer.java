@@ -100,8 +100,8 @@ public class RobotContainer {
 
     // Set the default command for the intake subsystem to the command from the
     // factory with the values provided by the triggers on the operator controller
-    driverController.b().whileTrue(new RunCarriage(true, CarriageConstants.maxPercent));
-    driverController.y().whileTrue(new RunCarriage(false, CarriageConstants.maxPercent));
+    driverController.b().whileTrue(new RunCarriage(CarriageConstants.maxPercent));
+    driverController.y().whileTrue(new RunCarriage(-CarriageConstants.maxPercent));
   }
 
   /**
