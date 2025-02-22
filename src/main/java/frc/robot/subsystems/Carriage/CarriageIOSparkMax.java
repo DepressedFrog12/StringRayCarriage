@@ -25,7 +25,7 @@ public class CarriageIOSparkMax implements CarriageIO {
     }
 
     @Override
-    public void processInputs(CarriageIOInputs inputs) {
+    public void processInputs(CarriageIOInputsAutoLogged inputs) {
         inputs.carriageRPM = carriage.getEncoder().getVelocity();
         inputs.carriageTemp = carriage.getMotorTemperature();
     }

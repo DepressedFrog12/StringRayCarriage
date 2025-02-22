@@ -11,7 +11,7 @@ public interface CarriageIO {
 
     }
 
-    public abstract void processInputs(final CarriageIOInputs inputs);
+    public abstract void processInputs(final CarriageIOInputsAutoLogged inputs);
 
     public abstract void setCarriagePercent(double maxPercent);
 

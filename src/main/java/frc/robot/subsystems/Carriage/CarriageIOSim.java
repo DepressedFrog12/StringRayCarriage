@@ -14,7 +14,7 @@ public class CarriageIOSim implements CarriageIO {
 	}
 
 	@Override
-	public void processInputs(CarriageIOInputs inputs) {
+	public void processInputs(CarriageIOInputsAutoLogged inputs) {
 		carriageMotorSim.update(0.02);
 
 		inputs.carriageRPM = carriageMotorSim.getAngularVelocityRPM();

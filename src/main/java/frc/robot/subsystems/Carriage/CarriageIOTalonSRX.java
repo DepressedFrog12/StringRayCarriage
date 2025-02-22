@@ -17,7 +17,7 @@ public class CarriageIOTalonSRX implements CarriageIO {
     }
 
     @Override
-    public void processInputs(CarriageIOInputs inputs) {
+    public void processInputs(CarriageIOInputsAutoLogged inputs) {
 
         inputs.carriageRPM = carriage.getSelectedSensorVelocity();
         inputs.carriageTemp = carriage.getTemperature();
