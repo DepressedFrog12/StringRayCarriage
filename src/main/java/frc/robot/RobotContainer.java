@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -40,12 +39,11 @@ public class RobotContainer {
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    if (RobotBase.isSimulation()) {
+    if (Robot.isSimulation()) {
       new CarriageSubsystem(new CarriageIOSim());
-    } else if (Constants.CarriageConstants.motor == Constants.CarriageConstants.Motor.SPARKMAX) {
-      new CarriageSubsystem(new CarriageIOSparkMax());
     } else {
-      new CarriageSubsystem(new CarriageIOTalonSRX());
+      // Change it to TalonSRX as needed.
+      new CarriageSubsystem(new CarriageIOSparkMax(CarriageConstants.CARRIAGE_MOTOR_ID));
     }
 
     configureBindings();

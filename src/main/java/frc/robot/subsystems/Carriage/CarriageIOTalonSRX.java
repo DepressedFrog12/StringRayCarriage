@@ -8,9 +8,10 @@ import edu.wpi.first.wpilibj.RobotController;
 import frc.robot.Constants;
 
 public class CarriageIOTalonSRX implements CarriageIO {
-    private final TalonSRX carriage = new TalonSRX(Constants.CarriageConstants.CARRIAGE_MOTOR_ID);
+    private TalonSRX carriage;
 
-    public CarriageIOTalonSRX() {
+    public CarriageIOTalonSRX(int motorId) {
+        carriage = new TalonSRX(motorId);
         carriage.configFactoryDefault();
 
         carriage.setInverted(true);
@@ -26,7 +27,7 @@ public class CarriageIOTalonSRX implements CarriageIO {
 
     @Override
     public void setCarriagePercent(double maxPercent) {
-        carriage.set(ControlMode.PercentOutput, MathUtil.clamp(maxPercent / RobotController.getInputVoltage(), -1, 1));
+        carriage.set(ControlMode.PercentOutput, MathUtil.clamp(maxPercent, -1, 1));
     }
 
     @Override

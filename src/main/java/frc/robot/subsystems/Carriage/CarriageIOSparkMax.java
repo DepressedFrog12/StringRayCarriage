@@ -13,10 +13,11 @@ import frc.robot.Constants;
 
 /** Add your docs here. */
 public class CarriageIOSparkMax implements CarriageIO {
-    private final SparkMax carriage = new SparkMax(Constants.CarriageConstants.CARRIAGE_MOTOR_ID,
-            SparkMax.MotorType.kBrushless);
+    private SparkMax carriage;
 
-    public CarriageIOSparkMax() {
+    public CarriageIOSparkMax(int motorId) {
+        carriage = new SparkMax(motorId, SparkMax.MotorType.kBrushless);
+
         SparkMaxConfig config = new SparkMaxConfig();
         config.inverted(true);
         config.idleMode(IdleMode.kBrake);

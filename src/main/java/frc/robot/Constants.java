@@ -4,6 +4,9 @@
 
 package frc.robot;
 
+import frc.robot.subsystems.Carriage.CarriageIOSparkMax;
+import frc.robot.subsystems.Carriage.CarriageSubsystem;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide
  * numerical or boolean
@@ -35,11 +38,5 @@ public final class Constants {
   public static final class CarriageConstants {
     public static final int CARRIAGE_MOTOR_ID = 21;
     public static final double maxPercent = 0.35;
-
-    public static enum Motor {
-      SPARKMAX, TALONSRX
-    };
-
-    public static Motor motor = Motor.SPARKMAX;
   }
 }
